@@ -29,6 +29,7 @@ phases:
       - echo Build started on `date`
       - echo Packaging application into a zip file...
       - zip -r online-shop-app.zip . # Include all files and directories, including hidden files
+      - docker builder prune -f
       - echo Building the Docker image...
       - docker build -t $IMAGE_NAME:$IMAGE_TAG .
 
