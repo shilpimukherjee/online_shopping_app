@@ -20,9 +20,9 @@ phases:
       - echo Logging in to Docker Registry...
       - echo "$DOCKER_REGISTRY_PASSWORD" | docker login -u "$DOCKER_REGISTRY_USERNAME" --password-stdin "$DOCKER_REGISTRY_URL"
       - IMAGE_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
-      - echo "image_tag: $IMAGE_TAG"
       - IMAGE_REPO_NAME="tws-online-shop-app-demo"
       - IMAGE_NAME="$DOCKER_REGISTRY_USERNAME/$IMAGE_REPO_NAME"
+      - echo "Full image name: $IMAGE_NAME:$IMAGE_TAG"
 
   build:
     commands:
