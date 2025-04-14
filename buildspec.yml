@@ -33,13 +33,13 @@ phases:
       - docker builder prune -f
       - echo Building the Docker image...
       - echo Building image $DOCKER_REGISTRY_USERNAME/$IMAGE_REPO_NAME:$IMAGE_TAG
-      - docker build -t $DOCKER_REGISTRY_USERNAME/$IMAGE_REPO_NAME:$IMAGE_TAG
+      - docker build -t $DOCKER_REGISTRY_USERNAME/$IMAGE_REPO_NAME:$IMAGE_TAG .
 
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push $DOCKER_REGISTRY_USERNAME/$IMAGE_REPO_NAME:$IMAGE_TAG
+      - docker push $DOCKER_REGISTRY_USERNAME/$IMAGE_REPO_NAME:$IMAGE_TAG 
       - echo Uploading zip file to S3 root location...
       - aws s3 rm s3://my-tws-online-shop-demo/online-shop-app/online-shop-app.zip
       - aws s3 cp online-shop-app.zip s3://my-tws-online-shop-demo/online-shop-app/ # Upload zip file to the root of the bucket
