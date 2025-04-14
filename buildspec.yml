@@ -4,8 +4,7 @@ env:
   parameter-store:
     DOCKER_REGISTRY_USERNAME: shilpidoc
     DOCKER_REGISTRY_PASSWORD: /myapp/docker-credentials/password
-    DOCKER_REGISTRY_URL: docker.io
-
+    DOCKER_REGISTRY_URL: /myapp/docker-registry/url
 phases:
   install:
     runtime-versions:
